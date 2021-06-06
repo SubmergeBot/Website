@@ -1,4 +1,4 @@
-import { sitemap } from "./Routing/Utils";
+import { sitemap } from "../Utils";
 
 self.addEventListener("install", async () => {
   console.info("[ServiceWorker] Installing...");

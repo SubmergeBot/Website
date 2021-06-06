@@ -1,4 +1,4 @@
-import { fetchPage, sitemap } from "./Utils";
+import { fetchPage, sitemap } from "../Utils";
 
 export interface WebCache {
   getPage(url: string): Promise<string>;

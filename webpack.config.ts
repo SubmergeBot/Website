@@ -7,12 +7,13 @@ const config: Configuration = {
   entry: {
     style: "./src/style/index.scss",
     script: "./src/script/index.ts",
-    worker: "./src/script/Worker.ts",
+    worker: "./src/script/Navigation/CacheWorker.ts",
   },
   output: {
     path: resolve(__dirname, "dist"),
     filename: "[name].js",
   },
+  resolve: { extensions: [".ts", ".js", ".json", ".scss", ".css"] },
   plugins: [new MCEP()],
   module: {
     rules: [
