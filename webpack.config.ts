@@ -7,7 +7,7 @@ const config: Configuration = {
   entry: {
     style: "./src/style/index.scss",
     script: "./src/script/index.ts",
-    cacheworker: "./src/script/cacheworker.ts",
+    worker: "./src/script/Worker.ts",
   },
   output: {
     path: resolve(__dirname, "dist"),
