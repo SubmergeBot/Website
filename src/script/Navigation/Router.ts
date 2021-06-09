@@ -13,14 +13,12 @@ if ("serviceWorker" in navigator) {
 
 const router = new Navigo("/");
 
-router.on(/.*/, (match) => {
-  if (!match?.url) return;
+router
+  .on(/.*/, (match) => {
+    const url = `/${match?.url}`;
+    console.debug(`[Router] Navigating to ${url}`);
 
-  console.debug(`[Router] Loading ${match.url}`);
-
-  const main = document.getElementsByTagName("main")[0];
-  cache.getPage(match.url).then((content) => {
-    console.debug(`[Router] ${main.innerHTML.length} -> ${content.length}`);
-    main.innerHTML = content;
-  });
-});
+    const main = document.getElementsByTagName("main")[0];
+    cache.getPage(url).then((content) => (main.innerHTML = content));
+  })
+  .resolve();
