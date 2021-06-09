@@ -50,6 +50,7 @@ export class SWCache implements WebCache {
 export class NoCache implements WebCache {
   async getPage(url: string) {
     const page = await fetchPage(url);
-    return page!;
+    if (page) return page;
+    return "<p>Unable to load page.</p>";
   }
 }
