@@ -1,0 +1,14 @@
+{
+  "actions" : {
+    "build" : {
+      "enabled" : true,
+      "script" : "#!\/bin\/sh\nnpm run build"
+    },
+    "clean" : {
+      "enabled" : true,
+      "script" : "#!\/bin\/sh\nnpm run clean"
+    }
+  },
+  "identifier" : "7C31D847-CF1D-4885-B12A-5F4B8F0ECA21",
+  "persistent" : true
+}
