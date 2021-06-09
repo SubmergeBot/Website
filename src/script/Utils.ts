@@ -2,8 +2,12 @@ export async function fetchPage(url: string, raw = false) {
   let response: string;
 
   if (typeof fetch === "function") {
-    const data = await fetch(url);
-    response = await data.text();
+    try {
+      const data = await fetch(url);
+      response = await data.text();
+    } catch (e) {
+      response = "";
+    }
   } else {
     const xhr = new XMLHttpRequest();
 
