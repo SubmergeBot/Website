@@ -2,7 +2,8 @@
   "scripts": {
     "clean": "rm -rf dist",
     "build": "webpack && rm dist/style.js && cp -R src/html/* dist/",
-    "deploy": "npm run clean && npm run build"
+    "sitemap": "node scripts/generateSitemap.js",
+    "deploy": "npm run clean && npm run build && npm run sitemap"
   },
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.1",

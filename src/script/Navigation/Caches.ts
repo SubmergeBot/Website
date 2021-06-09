@@ -11,6 +11,7 @@ export class LSCache implements WebCache {
         const page = await fetchPage(url);
         if (page) window.localStorage.setItem(url, page);
       });
+      console.info(`[LSCache] Successfully cached ${urls.length} pages!`);
     });
   }
 
@@ -26,12 +27,23 @@ export class LSCache implements WebCache {
 
 export class SWCache implements WebCache {
   constructor() {
-    navigator.serviceWorker.register("/worker.js");
+    navigator.serviceWorker
+      .register("/worker.js")
+      .then((v) => {
+        console.info("[SWCache] Successfully registered service worker");
+        console.info(`[SWCache] Scope: ${v.scope}`);
+      })
+      .catch((r) => {
+        console.error(`[SWCache] Failed to register service worker (${r})`);
+      });
   }
 
   async getPage(url: string) {
     const response = await fetch(url);
-    return await response.text();
+    const rawHtml = await response.text();
+    return new DOMParser()
+      .parseFromString(rawHtml, "text/html")
+      .getElementsByTagName("main")[0].innerHTML;
   }
 }
 
