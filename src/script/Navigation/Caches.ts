@@ -7,7 +7,7 @@ export interface WebCache {
 export class LSCache implements WebCache {
   constructor() {
     if (!("localStorage" in window)) {
-      throw new Error("Local Storage not supported")
+      throw new Error("Local Storage not supported");
     }
 
     sitemap().then((urls) => {
