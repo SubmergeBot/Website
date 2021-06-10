@@ -25,6 +25,7 @@ router.on("*", (match) => {
   const main = document.getElementsByTagName("main")[0];
   cache.getPage(url).then((content) => {
     main.innerHTML = content;
+    window.scrollTo(0, 0);
     router.updatePageLinks();
   });
 });
