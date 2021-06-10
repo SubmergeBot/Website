@@ -3,15 +3,17 @@ import { LSCache, NoCache, SWCache, WebCache } from "./Caches";
 
 let cache: WebCache;
 
-if ("serviceWorker" in navigator) {
+try {
   console.info("[Router] Using ServiceWorker Cache");
   cache = new SWCache();
-} else if ("localStorage" in window) {
-  console.info("[Router] Using LocalStorage Cache");
-  cache = new LSCache();
-} else {
-  console.info("[Router] Not Using Cache");
-  cache = new NoCache();
+} catch (e) {
+  try {
+    console.info("[Router] Using LocalStorage Cache");
+    cache = new LSCache();
+  } catch (e) {
+    console.info("[Router] Not Using Cache");
+    cache = new NoCache();
+  }
 }
 
 const router = new Navigo("/");

@@ -6,6 +6,10 @@ export interface WebCache {
 
 export class LSCache implements WebCache {
   constructor() {
+    if (!("localStorage" in window)) {
+      throw new Error("Local Storage not supported")
+    }
+
     sitemap().then((urls) => {
       urls.forEach(async (url) => {
         const page = await fetchPage(url);
@@ -27,6 +31,10 @@ export class LSCache implements WebCache {
 
 export class SWCache implements WebCache {
   constructor() {
+    if (!("serviceWorker" in navigator)) {
+      throw new Error("Service Workers not supported");
+    }
+
     navigator.serviceWorker
       .register("/worker.js")
       .then((v) => {

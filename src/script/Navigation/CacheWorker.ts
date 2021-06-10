@@ -30,7 +30,7 @@ self.addEventListener("fetch", (event: any) => {
   if (request.method !== "GET") return;
 
   event.respondWith(
-    // this is the most embarassing part of the entire site
+    // this is the most embarrassing part of the entire site
     (async () => {
       const cachedPage = await caches.match(request);
 
