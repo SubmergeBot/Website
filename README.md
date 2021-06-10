@@ -11,3 +11,6 @@ the site is plain old HTML with (hopefully) little to no bloat.
 - [ ] nav bar
 - [ ] docs
 - [ ] some sort of dashboard?
+- [ ] Cache API caching method (without ServiceWorker)
+- [ ] Detect cellular network and prompt before downloading site
+- [ ] A way to opt out of caching
