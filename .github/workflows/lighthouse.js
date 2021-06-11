@@ -5,6 +5,11 @@ module.exports = {
       target: "lhci",
       serverBaseUrl: "https://andre4ik3-lhci.herokuapp.com",
     },
-    assert: { preset: "lighthouse:no-pwa" },
+    assert: {
+      preset: "lighthouse:no-pwa",
+      assertions: {
+        "csp-xss": "off",
+      },
+    },
   },
 };
