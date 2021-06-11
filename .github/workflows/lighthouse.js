@@ -5,6 +5,9 @@ module.exports = {
       target: "lhci",
       serverBaseUrl: "https://andre4ik3-lhci.herokuapp.com",
     },
-    assert: { preset: "lighthouse:recommended" },
+    assert: {
+      preset: "lighthouse:recommended",
+      assertions: { "categories:pwa": "off" },
+    },
   },
 };
