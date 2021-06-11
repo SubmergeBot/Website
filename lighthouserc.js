@@ -1,7 +1,10 @@
 module.exports = {
   ci: {
     collect: { staticDistDir: "./dist" },
-    upload: { target: "temporary-public-storage" },
+    upload: {
+      target: "lhci",
+      serverBaseUrl: "https://andre4ik3-lhci.herokuapp.com",
+    },
     assert: { preset: "lighthouse:recommended" },
   },
 };
