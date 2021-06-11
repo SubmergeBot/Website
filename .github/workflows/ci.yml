@@ -29,3 +29,5 @@ jobs:
         run: "npx @lhci/cli autorun"
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+          LHCI_TOKEN: ${{ secrets.LHCI_TOKEN }}
+          LHCI_CONFIG: ".github/workflows/lighthouse.js"
