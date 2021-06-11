@@ -1,5 +1,6 @@
 import Navigo from "navigo";
 import { CSCache, SWCache, LSCache, NoCache, WebCache } from "./Caches";
+import { Logger } from "../Utils";
 
 let cache: WebCache;
 
@@ -18,10 +19,11 @@ try {
 }
 
 const router = new Navigo("/");
+const logger = new Logger("Router", "#39DB18");
 
 router.on("*", (match) => {
   const url = `/${match?.url}`;
-  console.debug(`[Router] Navigating to ${url}`);
+  logger.log("log", `Navigating to ${url}`);
 
   const main = document.getElementsByTagName("main")[0];
   cache.getPage(url).then((content) => {

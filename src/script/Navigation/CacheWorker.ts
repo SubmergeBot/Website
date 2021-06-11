@@ -1,4 +1,6 @@
-import { sitemap } from "../Utils";
+import { sitemap, Logger } from "../Utils";
+
+const logger = new Logger("Worker", "#E41EEB");
 
 async function updateCache(request: Request) {
   const cache = await caches.open("site");
@@ -17,6 +19,7 @@ self.addEventListener("install", (event: any) => {
     const cache = await caches.open("site");
     const urls = await sitemap();
     await cache.addAll(urls);
+    logger.group(`Downloaded ${urls.length} pages`, "log", urls);
   });
 });
 
