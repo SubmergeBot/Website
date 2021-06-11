@@ -1,18 +1,19 @@
 import Navigo from "navigo";
-import { LSCache, NoCache, SWCache, WebCache } from "./Caches";
+import { CSCache, SWCache, LSCache, NoCache, WebCache } from "./Caches";
 
 let cache: WebCache;
 
 try {
-  console.info("[Router] Using ServiceWorker Cache");
   cache = new SWCache();
 } catch (e) {
   try {
-    console.info("[Router] Using LocalStorage Cache");
-    cache = new LSCache();
+    cache = new CSCache();
   } catch (e) {
-    console.info("[Router] Not Using Cache");
-    cache = new NoCache();
+    try {
+      cache = new LSCache();
+    } catch (e) {
+      cache = new NoCache();
+    }
   }
 }
 
@@ -24,7 +25,7 @@ router.on("*", (match) => {
 
   const main = document.getElementsByTagName("main")[0];
   cache.getPage(url).then((content) => {
-    main.innerHTML = content;
+    main.outerHTML = content;
     window.scrollTo(0, 0);
     router.updatePageLinks();
   });
