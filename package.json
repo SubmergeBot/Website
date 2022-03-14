@@ -13,7 +13,7 @@
     "@typescript-eslint/eslint-plugin": "^4.28.0",
     "@typescript-eslint/parser": "^4.28.0",
     "css-loader": "^5.2.6",
-    "eslint": "^7.28.0",
+    "eslint": "^8.11.0",
     "mini-css-extract-plugin": "^1.6.0",
     "sass": "^1.35.1",
     "sass-loader": "^12.1.0",
